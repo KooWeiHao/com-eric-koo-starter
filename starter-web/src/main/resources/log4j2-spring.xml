@@ -2,7 +2,7 @@
 <Configuration>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%logger{1.}}{bright,yellow} (%file:%line): %msg%n%throwable" disableAnsi="false"/>
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%logger{1.}}{bright,yellow} (%file:%line):%replace{ %x}{ \[\]}{} %msg%n%throwable" disableAnsi="false"/>
         </Console>
     </Appenders>
 

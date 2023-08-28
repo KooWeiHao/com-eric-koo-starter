@@ -12,7 +12,7 @@ import org.springframework.web.cors.CorsConfiguration;
 @Setter
 @ToString
 @Configuration
-@ConfigurationProperties(prefix = WebConstants.TAG)
+@ConfigurationProperties(prefix = WebConstant.TAG)
 public class WebProperties {
     private Cors cors = new Cors();
 
