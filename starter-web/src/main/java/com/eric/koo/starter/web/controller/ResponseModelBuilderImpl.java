@@ -86,7 +86,7 @@ class ResponseModelBuilderImpl implements ResponseModelBuilder{
     }
 
     @Override
-    public ResponseModel<Void> success(String error, String message) {
+    public ResponseModel<Void> failed(String error, String message) {
         var responseModel = new ResponseModel<Void>();
         responseModel.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
         responseModel.setStatus(ResponseModel.Status.FAILED);
@@ -98,7 +98,7 @@ class ResponseModelBuilderImpl implements ResponseModelBuilder{
     }
 
     @Override
-    public ResponseModel<Void> success(String error, HttpStatus httpStatus) {
+    public ResponseModel<Void> failed(String error, HttpStatus httpStatus) {
         var responseModel = new ResponseModel<Void>();
         responseModel.setCode(httpStatus.value());
         responseModel.setStatus(ResponseModel.Status.FAILED);
@@ -110,7 +110,7 @@ class ResponseModelBuilderImpl implements ResponseModelBuilder{
     }
 
     @Override
-    public ResponseModel<Void> success(String error, HttpStatus httpStatus, String message) {
+    public ResponseModel<Void> failed(String error, HttpStatus httpStatus, String message) {
         var responseModel = new ResponseModel<Void>();
         responseModel.setCode(httpStatus.value());
         responseModel.setStatus(ResponseModel.Status.FAILED);

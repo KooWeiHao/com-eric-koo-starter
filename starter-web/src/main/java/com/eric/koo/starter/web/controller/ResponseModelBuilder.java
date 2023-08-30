@@ -9,7 +9,7 @@ public interface ResponseModelBuilder {
     <T> ResponseModel<T> success(T data, HttpStatus httpStatus, String message);
 
     ResponseModel<Void> failed(String error);
-    ResponseModel<Void> success(String error, String message);
-    ResponseModel<Void> success(String error, HttpStatus httpStatus);
-    ResponseModel<Void> success(String error, HttpStatus httpStatus, String message);
+    ResponseModel<Void> failed(String error, String message);
+    ResponseModel<Void> failed(String error, HttpStatus httpStatus);
+    ResponseModel<Void> failed(String error, HttpStatus httpStatus, String message);
 }

@@ -15,6 +15,7 @@ import org.springframework.web.cors.CorsConfiguration;
 @ConfigurationProperties(prefix = WebConstant.TAG)
 public class WebProperties {
     private Cors cors = new Cors();
+    private StandardExceptionHandler standardExceptionHandler = new StandardExceptionHandler();
 
     @Getter
     @Setter
@@ -26,5 +27,11 @@ public class WebProperties {
         private boolean allowedCredentials = true;
         private long maxAge = 3600;
         private String[] exposedHeaders;
+    }
+
+    @Getter
+    @Setter
+    public static class StandardExceptionHandler {
+        private boolean printStackTraceEnabled;
     }
 }
