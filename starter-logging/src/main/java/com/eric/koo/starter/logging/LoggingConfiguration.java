@@ -1,6 +1,5 @@
-package com.eric.koo.starter.web.logging;
+package com.eric.koo.starter.logging;
 
-import com.eric.koo.starter.web.WebConstant;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +20,8 @@ class LoggingConfiguration {
 
     @Bean
     void configureLog4j2() {
-        if(activeProfiles.contains(WebConstant.PROFILE_PROD)) {
+        // TODO: might consider use prod constant from util repo
+        if(activeProfiles.contains("prod")) {
             Configurator.initialize(null, ResourceUtils.CLASSPATH_URL_PREFIX + LOG_PROD_XML);
             log.info("Configured log - {}", LOG_PROD_XML);
         }

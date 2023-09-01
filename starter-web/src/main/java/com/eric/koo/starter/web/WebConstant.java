@@ -6,8 +6,6 @@ public final class WebConstant {
 
     public static final String PATH_PATTERN_ANY = "/**";
 
-    public static final String PROFILE_PROD = "prod";
-
     public static final String PREFIX_REQUEST_REFERENCE_ID = "REQ";
 
     public static final String ERROR_UNAVAILABLE_REQUEST_PATH = "Request path is unavailable";

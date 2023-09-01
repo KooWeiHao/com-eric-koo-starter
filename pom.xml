@@ -17,6 +17,7 @@
 
 	<modules>
 		<module>starter-parent</module>
+		<module>starter-logging</module>
 		<module>starter-web</module>
 	</modules>
 </project>
