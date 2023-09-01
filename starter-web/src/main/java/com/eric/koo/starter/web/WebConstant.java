@@ -2,7 +2,9 @@ package com.eric.koo.starter.web;
 
 public final class WebConstant {
 
-    public static final String TAG = "web";
+    private static final String PROPERTIES_PREFIX_BASE = "web.";
+    public static final String PROPERTIES_PREFIX_CORS = PROPERTIES_PREFIX_BASE + "cors";
+    public static final String PROPERTIES_PREFIX_STANDARD_EXCEPTION_HANDLER = PROPERTIES_PREFIX_BASE + "standard.exception.handler";
 
     public static final String PATH_PATTERN_ANY = "/**";
 

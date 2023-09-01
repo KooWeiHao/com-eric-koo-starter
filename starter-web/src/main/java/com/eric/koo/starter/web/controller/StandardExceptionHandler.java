@@ -1,6 +1,5 @@
 package com.eric.koo.starter.web.controller;
 
-import com.eric.koo.starter.web.WebProperties;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.core.annotation.Order;
@@ -19,10 +18,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 class StandardExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private final WebProperties webProperties;
+    private final StandardExceptionHandlerProperties standardExceptionHandlerProperties;
 
-    StandardExceptionHandler(WebProperties webProperties) {
-        this.webProperties = webProperties;
+    StandardExceptionHandler(StandardExceptionHandlerProperties standardExceptionHandlerProperties) {
+        this.standardExceptionHandlerProperties = standardExceptionHandlerProperties;
     }
 
     @InitBinder
@@ -32,7 +31,7 @@ class StandardExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        if (webProperties.getStandardExceptionHandler().isPrintStackTraceEnabled()) {
+        if (standardExceptionHandlerProperties.isPrintStackTraceEnabled()) {
             log.error(ex.getMessage(), ex);
         } else {
             log.error(ex.getMessage());

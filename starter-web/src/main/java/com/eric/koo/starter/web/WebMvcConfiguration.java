@@ -11,25 +11,24 @@ import java.util.Optional;
 @Configuration
 class WebMvcConfiguration implements WebMvcConfigurer {
 
-    private final WebProperties webProperties;
+    private final CorsProperties corsProperties;
 
-    WebMvcConfiguration(WebProperties webProperties) {
-        this.webProperties = webProperties;
+    WebMvcConfiguration(CorsProperties corsProperties) {
+        this.corsProperties = corsProperties;
     }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        var cors = webProperties.getCors();
+        log.debug(corsProperties);
+
         var corsRegistration = registry.addMapping(WebConstant.PATH_PATTERN_ANY)
-                .allowedOriginPatterns(cors.getAllowedOrigins())
-                .allowedMethods(cors.getAllowedMethods())
-                .allowedHeaders(cors.getAllowedHeaders())
-                .allowCredentials(cors.isAllowedCredentials())
-                .maxAge(cors.getMaxAge());
+                .allowedOriginPatterns(corsProperties.getAllowedOrigins())
+                .allowedMethods(corsProperties.getAllowedMethods())
+                .allowedHeaders(corsProperties.getAllowedHeaders())
+                .allowCredentials(corsProperties.isAllowedCredentials())
+                .maxAge(corsProperties.getMaxAge());
 
-        Optional.ofNullable(cors.getExposedHeaders())
+        Optional.ofNullable(corsProperties.getExposedHeaders())
                 .ifPresent(corsRegistration::exposedHeaders);
-
-        log.debug(cors);
     }
 }
