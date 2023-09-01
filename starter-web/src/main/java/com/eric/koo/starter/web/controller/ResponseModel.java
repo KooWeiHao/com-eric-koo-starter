@@ -17,6 +17,7 @@ public class ResponseModel<T> {
     private String error;
     private SystemInformation systemInformation;
 
+    @JsonInclude(value = JsonInclude.Include.NON_NULL)
     @Data
     public static class SystemInformation {
         private String referenceId;

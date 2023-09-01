@@ -19,11 +19,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 class StandardExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private final ResponseModelBuilder responseModelBuilder;
     private final WebProperties webProperties;
 
-    StandardExceptionHandler(ResponseModelBuilder responseModelBuilder, WebProperties webProperties) {
-        this.responseModelBuilder = responseModelBuilder;
+    StandardExceptionHandler(WebProperties webProperties) {
         this.webProperties = webProperties;
     }
 
@@ -40,7 +38,7 @@ class StandardExceptionHandler extends ResponseEntityExceptionHandler {
             log.error(ex.getMessage());
         }
 
-        var responseModel = responseModelBuilder.failed(ex.getMessage(), status);
+        var responseModel = ResponseModelBuilder.failed(ex.getMessage(), status);
         return super.handleExceptionInternal(ex, responseModel, headers, status, request);
     }
 }
