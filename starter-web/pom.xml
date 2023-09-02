@@ -16,6 +16,8 @@
 
     <properties>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+
+        <springdoc-openapi.version>1.7.0</springdoc-openapi.version>
     </properties>
 
     <dependencies>
@@ -42,6 +44,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc-openapi.version}</version>
         </dependency>
     </dependencies>
 
