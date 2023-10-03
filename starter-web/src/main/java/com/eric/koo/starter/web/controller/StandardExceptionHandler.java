@@ -9,8 +9,10 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @Log4j2
@@ -27,6 +29,11 @@ class StandardExceptionHandler extends ResponseEntityExceptionHandler {
     @InitBinder
     private void initBinder(WebDataBinder webDataBinder){
         webDataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+    }
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    ResponseEntity<Object> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException maxUploadSizeExceededException, WebRequest request) {
+        return handleExceptionInternal(maxUploadSizeExceededException, null, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
     @Override

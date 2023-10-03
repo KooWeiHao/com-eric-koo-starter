@@ -15,6 +15,7 @@
 
     <properties>
         <springdoc-openapi.version>1.7.0</springdoc-openapi.version>
+        <commons-fileupload.version>1.5</commons-fileupload.version>
     </properties>
 
     <dependencies>
@@ -44,10 +45,15 @@
             <version>${springdoc-openapi.version}</version>
         </dependency>
 
-        <!-- TODO: Might require to move it to util repo-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
         </dependency>
     </dependencies>
 
