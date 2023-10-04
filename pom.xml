@@ -2,20 +2,38 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.eric.koo</groupId>
+		<artifactId>starter-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath/>
+	</parent>
 
-	<groupId>com.eric.koo</groupId>
 	<artifactId>starter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>Starter Repository</name>
 	<description>Starter Repository</description>
 
 	<packaging>pom</packaging>
 
 	<properties>
-		<maven.deploy.skip>true</maven.deploy.skip>
+		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
 	</properties>
 
 	<modules>
-		<module>starter-parent</module>
+		<module>starter-web</module>
 	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<inherited>false</inherited>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
