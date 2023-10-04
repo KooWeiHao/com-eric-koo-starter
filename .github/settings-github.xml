@@ -30,7 +30,7 @@
     <server>
       <id>github</id>
       <username>KooWeiHao</username>
-      <password>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</password>
+      <password>${env.GITHUB_TOKEN}</password>
     </server>
   </servers>
 </settings>
