@@ -31,6 +31,11 @@ class StandardExceptionHandler extends ResponseEntityExceptionHandler {
         webDataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
+    @ExceptionHandler(Exception.class)
+    ResponseEntity<Object> handleGenericException(Exception exception, WebRequest request) {
+        return handleExceptionInternal(exception, null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+    }
+
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     ResponseEntity<Object> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException maxUploadSizeExceededException, WebRequest request) {
         return handleExceptionInternal(maxUploadSizeExceededException, null, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
