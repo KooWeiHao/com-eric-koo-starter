@@ -30,7 +30,7 @@
     <server>
       <id>github</id>
       <username>KooWeiHao</username>
-      <password>${env.MAVEN_REPOSITORY_TOKEN}</password>
+      <password>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</password>
     </server>
   </servers>
 </settings>
