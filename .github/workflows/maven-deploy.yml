@@ -30,7 +30,7 @@ jobs:
           server-id: github
 
       - name: Build with maven
-        run: mvn --batch-mode clean package
+        run: mvn --settings $GITHUB_WORKSPACE/.github/settings-github.xml --batch-mode clean package
 
       - name: Deploy to Github Package
         run: mvn --batch-mode deploy
