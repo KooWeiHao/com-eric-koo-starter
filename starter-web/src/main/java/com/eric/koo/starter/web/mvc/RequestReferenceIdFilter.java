@@ -1,4 +1,4 @@
-package com.eric.koo.starter.web.controller;
+package com.eric.koo.starter.web.mvc;
 
 import com.eric.koo.starter.web.WebConstant;
 import org.apache.commons.lang3.StringUtils;

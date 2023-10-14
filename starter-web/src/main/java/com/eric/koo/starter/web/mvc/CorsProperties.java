@@ -1,5 +1,6 @@
-package com.eric.koo.starter.web;
+package com.eric.koo.starter.web.mvc;
 
+import com.eric.koo.starter.web.WebConstant;
 import io.undertow.util.Methods;
 import lombok.Getter;
 import lombok.Setter;
