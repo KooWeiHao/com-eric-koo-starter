@@ -1,4 +1,4 @@
-package com.eric.koo.starter.web.controller;
+package com.eric.koo.starter.web.mvc;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
