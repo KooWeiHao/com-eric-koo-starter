@@ -1,6 +1,8 @@
 package com.eric.koo.starter.web.mvc;
 
 import com.eric.koo.starter.web.WebConstant;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.ThreadContext;
 import org.springframework.http.HttpStatus;
@@ -11,11 +13,12 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Log4j2
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ResponseModelBuilder {
 
     private static Optional<String> getCurrentRequestPath() {
         return Optional.ofNullable(RequestContextHolder.getRequestAttributes())
-                .filter(requestAttributes -> requestAttributes instanceof ServletRequestAttributes)
+                .filter(ServletRequestAttributes.class::isInstance)
                 .map(requestAttributes -> ((ServletRequestAttributes) requestAttributes).getRequest().getServletPath());
     }
 
