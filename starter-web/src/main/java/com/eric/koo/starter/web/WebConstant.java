@@ -1,5 +1,9 @@
 package com.eric.koo.starter.web;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class WebConstant {
 
     private static final String PROPERTIES_PREFIX_BASE = "web.";
