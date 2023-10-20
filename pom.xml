@@ -18,11 +18,29 @@
 
 	<properties>
 		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+
+		<springdoc-openapi.version>1.7.0</springdoc-openapi.version>
+		<commons-fileupload.version>1.5</commons-fileupload.version>
 	</properties>
 
 	<modules>
 		<module>starter-web</module>
 	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi-ui</artifactId>
+				<version>${springdoc-openapi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>
