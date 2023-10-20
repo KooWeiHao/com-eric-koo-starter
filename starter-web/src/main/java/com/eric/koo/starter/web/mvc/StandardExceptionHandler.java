@@ -33,7 +33,11 @@ class StandardExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     ResponseEntity<Object> handleGenericException(Exception exception, WebRequest request) {
-        return handleExceptionInternal(exception, null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+        // always log stack trace of generic exception
+        log.error(exception.getMessage(), exception);
+
+        var responseModel = ResponseModelBuilder.failed(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return super.handleExceptionInternal(exception, responseModel, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
 
     @ExceptionHandler(MaxUploadSizeExceededException.class)
