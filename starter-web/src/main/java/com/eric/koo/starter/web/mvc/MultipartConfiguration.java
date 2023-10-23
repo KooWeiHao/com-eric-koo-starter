@@ -18,7 +18,7 @@ class MultipartConfiguration {
 
     @Bean
     public MultipartResolver multipartResolver() {
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        var multipartResolver = new CommonsMultipartResolver();
         multipartResolver.setMaxUploadSize(multipartProperties.getMaxRequestSize().toBytes());
         multipartResolver.setMaxUploadSizePerFile(multipartProperties.getMaxFileSize().toBytes());
 
