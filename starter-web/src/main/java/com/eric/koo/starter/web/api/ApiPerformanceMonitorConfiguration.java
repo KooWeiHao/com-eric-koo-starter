@@ -24,13 +24,7 @@ class ApiPerformanceMonitorConfiguration {
     @Bean
     public Advisor apiPerformanceMonitorAdvisor() {
         var pointcut = new AspectJExpressionPointcut();
-        pointcut.setExpression(
-                String.join(
-                        " && ",
-                        "@within(org.springframework.web.bind.annotation.RestController)",
-                        "!within(org.springdoc.webmvc..*)"
-                )
-        );
+        pointcut.setExpression("@within(org.springframework.web.bind.annotation.RestController)");
 
         return new DefaultPointcutAdvisor(pointcut, apiPerformanceMonitorInterceptor());
     }
