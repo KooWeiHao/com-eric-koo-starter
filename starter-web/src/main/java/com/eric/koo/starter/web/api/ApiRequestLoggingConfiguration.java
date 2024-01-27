@@ -114,7 +114,7 @@ class ApiRequestLoggingConfiguration {
             responseBuilder.append(responsePayload.get());
             responseBuilder.append(']');
 
-            log.debug(responseBuilder.toString());
+            log.debug("{}", responseBuilder);
         }
     }
 }
