@@ -1,4 +1,4 @@
-package com.eric.koo.starter.web.mvc;
+package com.eric.koo.starter.web.api;
 
 import com.eric.koo.starter.web.WebConstant;
 import lombok.Getter;
