@@ -10,6 +10,7 @@ public final class WebConstant {
     public static final String PROPERTIES_PREFIX_CORS = PROPERTIES_PREFIX_BASE + "cors";
     public static final String PROPERTIES_PREFIX_STANDARD_EXCEPTION_HANDLER = PROPERTIES_PREFIX_BASE + "standard.exception.handler";
     public static final String PROPERTIES_PREFIX_SWAGGER = PROPERTIES_PREFIX_BASE + "swagger";
+    public static final String PROPERTIES_PREFIX_API = PROPERTIES_PREFIX_BASE + "api";
 
     public static final String PATH_PATTERN_ANY = "/**";
 
