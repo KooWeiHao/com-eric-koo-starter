@@ -18,7 +18,6 @@ class SystemAuditorAwareImpl implements AuditorAware<String> {
     @Override
     public Optional<String> getCurrentAuditor() {
         return Optional.ofNullable(auditProperties.getSystemCode())
-                .map(systemCode -> String.format("%s-%s", JpaConstant.SYSTEM, systemCode))
                 .or(() -> Optional.of(JpaConstant.SYSTEM));
     }
 }
