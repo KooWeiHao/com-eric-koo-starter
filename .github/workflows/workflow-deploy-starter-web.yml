@@ -1,0 +1,22 @@
+name: workflow-deploy-starter-web
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on pull request events but only for the "master" branch
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+    paths:
+      - "starter-web/**"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Trigger job-maven-deploy
+  maven-deploy:
+    if: github.event.pull_request.merged == true
+    uses: ./.github/workflows/job-maven-deploy.yml
+    # To pass named inputs to a called workflow
+    with:
+      module: starter-web
