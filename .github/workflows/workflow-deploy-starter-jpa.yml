@@ -9,7 +9,7 @@ on:
     branches:
       - master
     paths:
-      - "starter-job/**"
+      - "starter-jpa/**"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,4 +19,4 @@ jobs:
     uses: ./.github/workflows/job-maven-deploy.yml
     # To pass named inputs to a called workflow
     with:
-      module: starter-job
+      module: starter-jpa
