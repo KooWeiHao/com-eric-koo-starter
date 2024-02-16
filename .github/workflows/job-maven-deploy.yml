@@ -38,4 +38,4 @@ jobs:
         run: mvn --settings $GITHUB_WORKSPACE/.github/settings-github.xml --projects ${{ inputs.MODULE }} --batch-mode clean package
 
       - name: Deploy to Github Package
-        run: mvn --batch-mode deploy
+        run: mvn --batch-mode --projects ${{ inputs.MODULE }} deploy
