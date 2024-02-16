@@ -5,9 +5,12 @@ on:
   # Triggers the job when it is called in a workflow
   workflow_call:
     inputs:
-      module:
+      MODULE:
         required: true
         type: string
+    secrets:
+      MAVEN_REPOSITORY_TOKEN:
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -32,7 +35,7 @@ jobs:
           server-id: github
 
       - name: Build with maven
-        run: mvn --settings $GITHUB_WORKSPACE/.github/settings-github.xml --projects ${{ inputs.module }} --batch-mode clean package
+        run: mvn --settings $GITHUB_WORKSPACE/.github/settings-github.xml --projects ${{ inputs.MODULE }} --batch-mode clean package
 
       - name: Deploy to Github Package
         run: mvn --batch-mode deploy

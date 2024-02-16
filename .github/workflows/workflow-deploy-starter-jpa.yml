@@ -19,4 +19,5 @@ jobs:
     uses: ./.github/workflows/job-maven-deploy.yml
     # To pass named inputs to a called workflow
     with:
-      module: starter-jpa
+      MODULE: starter-jpa
+    secrets: inherit
