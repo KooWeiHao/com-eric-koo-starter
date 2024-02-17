@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.eric.koo</groupId>
         <artifactId>starter</artifactId>
-        <version>${revision}</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>starter-jpa</artifactId>

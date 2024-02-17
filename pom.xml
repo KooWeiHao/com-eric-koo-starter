@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>starter</artifactId>
-	<version>${revision}</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>Starter Repository</name>
 	<description>Starter Repository</description>
 
@@ -18,7 +18,6 @@
 
 	<properties>
 		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-		<revision>1.0.0-SNAPSHOT</revision>
 
 		<springdoc-openapi.version>1.7.0</springdoc-openapi.version>
 		<commons-fileupload.version>1.5</commons-fileupload.version>
