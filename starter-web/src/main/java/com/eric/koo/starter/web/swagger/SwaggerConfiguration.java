@@ -25,7 +25,7 @@ class SwaggerConfiguration {
 
     private final SwaggerProperties swaggerProperties;
 
-    public SwaggerConfiguration(SwaggerProperties swaggerProperties) {
+    SwaggerConfiguration(SwaggerProperties swaggerProperties) {
         this.swaggerProperties = swaggerProperties;
     }
 
