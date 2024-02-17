@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 public class JpaConstant {
 
     public static final String SYSTEM = "SYSTEM";
-    public static final String TEMP = "Temp";
 
     private static final String PROPERTIES_PREFIX_BASE = "jpa.";
     public static final String PROPERTIES_PREFIX_AUDIT = PROPERTIES_PREFIX_BASE + "audit";
