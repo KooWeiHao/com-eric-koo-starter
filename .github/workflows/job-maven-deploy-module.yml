@@ -21,7 +21,7 @@ jobs:
 
     # Run after workflow-deploy-starter-pom
     # Run if workflow-deploy-starter-pom is not triggered
-    needs: workflow-deploy-starter-pom
+    needs: maven-deploy-pom
     if: always() && !failure() && !cancelled()
 
     env:
