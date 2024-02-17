@@ -19,11 +19,6 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Run after workflow-deploy-starter-pom
-    # Run if workflow-deploy-starter-pom is not triggered
-    needs: maven-deploy-pom
-    if: always() && !failure() && !cancelled()
-
     env:
       GITHUB_TOKEN: ${{ secrets.MAVEN_REPOSITORY_TOKEN }}
 

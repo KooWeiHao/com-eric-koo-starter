@@ -15,7 +15,11 @@ on:
 jobs:
   # Trigger job-maven-deploy
   maven-deploy:
-    if: github.event.pull_request.merged == true
+    # Run after workflow-deploy-starter-pom
+    # Run if workflow-deploy-starter-pom is not triggered
+    # Run if pull request is merged
+    needs: workflow-deploy-starter-pom
+    if: github.event.pull_request.merged == true && always() && !failure() && !cancelled()
     uses: ./.github/workflows/job-maven-deploy-module.yml
     # To pass named inputs to a called workflow
     with:
