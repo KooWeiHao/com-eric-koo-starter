@@ -1,0 +1,46 @@
+name: job-maven-deploy-module
+
+# Controls when the workflow will run
+on:
+  # Triggers the job when it is called in a workflow
+  workflow_call:
+    inputs:
+      MODULE:
+        required: true
+        type: string
+    secrets:
+      MAVEN_REPOSITORY_TOKEN:
+        required: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  maven-deploy-module:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Run after workflow-deploy-starter-pom
+    # Run if workflow-deploy-starter-pom is not triggered
+    needs: workflow-deploy-starter-pom
+    if: always() && !failure() && !cancelled()
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.MAVEN_REPOSITORY_TOKEN }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Setup JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          server-id: github
+
+      - name: Build with maven
+        run: mvn --settings $GITHUB_WORKSPACE/.github/settings-github.xml --projects ${{ inputs.MODULE }} --batch-mode clean package
+
+      - name: Deploy to Github Package
+        run: mvn --batch-mode --projects ${{ inputs.MODULE }} deploy
