@@ -12,7 +12,7 @@ class MultipartConfiguration {
     private final MultipartProperties multipartProperties;
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    public MultipartConfiguration(MultipartProperties multipartProperties) {
+    MultipartConfiguration(MultipartProperties multipartProperties) {
         this.multipartProperties = multipartProperties;
     }
 
