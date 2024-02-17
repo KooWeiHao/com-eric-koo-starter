@@ -1,21 +1,21 @@
-name: job-maven-deploy
+name: workflow-deploy-starter-pom
 
 # Controls when the workflow will run
 on:
-  # Triggers the job when it is called in a workflow
-  workflow_call:
-    inputs:
-      MODULE:
-        required: true
-        type: string
-    secrets:
-      MAVEN_REPOSITORY_TOKEN:
-        required: true
+  # Triggers the workflow on pull request events but only for the "master" branch
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+    paths:
+      - "pom.xml"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  job-maven-deploy:
+  # Trigger job-maven-deploy
+  maven-deploy-pom:
+    if: github.event.pull_request.merged == true
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -35,7 +35,7 @@ jobs:
           server-id: github
 
       - name: Build with maven
-        run: mvn --settings $GITHUB_WORKSPACE/.github/settings-github.xml --projects ${{ inputs.MODULE }} --batch-mode clean package
+        run: mvn --settings $GITHUB_WORKSPACE/.github/settings-github.xml --non-recursive --batch-mode clean package
 
       - name: Deploy to Github Package
-        run: mvn --batch-mode --projects ${{ inputs.MODULE }} deploy
+        run: mvn --non-recursive --batch-mode deploy
