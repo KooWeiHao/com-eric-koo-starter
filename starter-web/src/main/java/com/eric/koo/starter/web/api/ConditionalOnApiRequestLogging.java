@@ -11,6 +11,6 @@ import java.lang.annotation.Target;
 @Documented
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@ConditionalOnExpression(value = "${web.api.logging.enabled:true}") //TODO: Might consider to create custom condition class to use ApiProperties
+@ConditionalOnExpression(value = "${web.api.logging.enabled:true}")
 public @interface ConditionalOnApiRequestLogging {
 }

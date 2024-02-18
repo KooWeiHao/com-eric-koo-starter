@@ -1,5 +1,7 @@
 package com.eric.koo.starter.web.logging;
 
+import com.eric.koo.starter.util.Constant;
+import com.eric.koo.starter.web.WebConstant;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,14 +18,11 @@ class LoggingConfiguration {
     @Value("${spring.profiles.active:}")
     private List<String> activeProfiles;
 
-    private static final String LOG_PROD_XML = "log4j2-prod.xml";
-
     @Bean
     void configureLog4j2() {
-        // TODO: might consider use prod constant from util repo
-        if(activeProfiles.contains("prod")) {
-            Configurator.initialize(null, ResourceUtils.CLASSPATH_URL_PREFIX + LOG_PROD_XML);
-            log.info("Configured log - {}", LOG_PROD_XML);
+        if(activeProfiles.contains(Constant.ENVIRONMENT_PRODUCTION)) {
+            Configurator.initialize(null, ResourceUtils.CLASSPATH_URL_PREFIX + WebConstant.LOG_PROD_XML);
+            log.info("Configured log - {}", WebConstant.LOG_PROD_XML);
         }
     }
 }

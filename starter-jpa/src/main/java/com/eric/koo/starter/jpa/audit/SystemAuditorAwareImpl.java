@@ -1,6 +1,6 @@
 package com.eric.koo.starter.jpa.audit;
 
-import com.eric.koo.starter.jpa.JpaConstant;
+import com.eric.koo.starter.util.Constant;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +18,6 @@ class SystemAuditorAwareImpl implements AuditorAware<String> {
     @Override
     public Optional<String> getCurrentAuditor() {
         return Optional.ofNullable(auditProperties.getSystemCode())
-                .or(() -> Optional.of(JpaConstant.SYSTEM));
+                .or(() -> Optional.of(Constant.SYSTEM));
     }
 }

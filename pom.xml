@@ -20,17 +20,25 @@
 		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
 		<revision>1.0.0-SNAPSHOT</revision>
 
+		<starter-util.version>1.0.0-SNAPSHOT</starter-util.version>
 		<springdoc-openapi.version>1.7.0</springdoc-openapi.version>
 		<commons-fileupload.version>1.5</commons-fileupload.version>
 	</properties>
 
 	<modules>
+		<module>starter-util</module>
+
 		<module>starter-web</module>
 		<module>starter-jpa</module>
-	</modules>
+    </modules>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>com.eric.koo</groupId>
+				<artifactId>starter-util</artifactId>
+				<version>${starter-util.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.springdoc</groupId>
 				<artifactId>springdoc-openapi-ui</artifactId>
