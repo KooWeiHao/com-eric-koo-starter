@@ -16,5 +16,7 @@ public final class WebConstant {
 
     public static final String PREFIX_REQUEST_REFERENCE_ID = "REQ";
 
+    public static final String LOG_PROD_XML = "log4j2-prod.xml";
+
     public static final String ERROR_UNAVAILABLE_REQUEST_PATH = "Request path is unavailable";
 }
