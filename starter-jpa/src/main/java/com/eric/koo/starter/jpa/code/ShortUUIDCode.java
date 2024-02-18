@@ -1,4 +1,6 @@
-package com.eric.koo.starter.jpa.code.annotation;
+package com.eric.koo.starter.jpa.code;
+
+import org.hibernate.annotations.ValueGenerationType;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -9,6 +11,7 @@ import java.lang.annotation.Target;
 @Documented
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
+@ValueGenerationType(generatedBy = ShortUUIDCodeGeneration.class)
 public @interface ShortUUIDCode {
     String prefix() default "";
 }

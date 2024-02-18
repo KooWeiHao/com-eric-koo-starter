@@ -10,6 +10,4 @@ public class JpaConstant {
 
     private static final String PROPERTIES_PREFIX_BASE = "jpa.";
     public static final String PROPERTIES_PREFIX_AUDIT = PROPERTIES_PREFIX_BASE + "audit";
-
-    public static final String ERROR_MULTIPLE_CODE_GENERATOR = "Field is annotated by multiple code generator";
 }
