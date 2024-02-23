@@ -14,4 +14,6 @@ import java.lang.annotation.Target;
 @ValueGenerationType(generatedBy = UUIDCodeGeneration.class)
 public @interface UUIDCode {
     String prefix() default "";
+
+    boolean isShort() default false;
 }

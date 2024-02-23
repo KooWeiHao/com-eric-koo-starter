@@ -11,7 +11,11 @@ import java.lang.annotation.Target;
 @Documented
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@ValueGenerationType(generatedBy = ShortUUIDCodeGeneration.class)
-public @interface ShortUUIDCode {
-    String prefix() default "";
+@ValueGenerationType(generatedBy = SequenceCodeGeneration.class)
+public @interface SequenceCode {
+    String prefix();
+
+    int padding() default 8;
+
+    boolean isRequiredDate() default true;
 }
