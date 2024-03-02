@@ -14,5 +14,13 @@
         <Logger name="com.eric.koo" additivity="false" level="info">
             <AppenderRef ref="console" />
         </Logger>
+
+        <Logger name="com.eric.koo.starter.web.api" additivity="false" level="trace">
+            <AppenderRef ref="console" />
+        </Logger>
+
+        <Logger name="org.hibernate.SQL" additivity="false" level="debug">
+            <AppenderRef ref="console" />
+        </Logger>
     </Loggers>
 </Configuration>
