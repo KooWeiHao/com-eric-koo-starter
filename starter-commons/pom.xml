@@ -11,8 +11,8 @@
 
     <artifactId>starter-commons</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Starter Util</name>
-    <description>Starter Util</description>
+    <name>Starter Commons</name>
+    <description>Starter Commons</description>
 
     <dependencies>
         <dependency>
