@@ -1,7 +1,7 @@
 package com.eric.koo.starter.jpa.code;
 
 import com.eric.koo.starter.jpa.JpaConstant;
-import com.eric.koo.starter.util.UUIDUtil;
+import com.eric.koo.starter.commons.util.UUIDUtil;
 import org.hibernate.tuple.ValueGenerator;
 import org.springframework.core.annotation.AnnotationUtils;
 

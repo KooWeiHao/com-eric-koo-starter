@@ -1,6 +1,8 @@
 package com.eric.koo.starter.web.mvc;
 
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.StringUtils;
+import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +15,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import javax.validation.ConstraintViolationException;
+import java.util.Optional;
+import java.util.StringJoiner;
 
 @Log4j2
 @Order
@@ -33,16 +40,36 @@ class StandardExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     ResponseEntity<Object> handleGenericException(Exception exception, WebRequest request) {
-        // always log stack trace of generic exception
-        log.error(exception.getMessage(), exception);
+        return handleExceptionInternal(exception, exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+    }
 
-        var responseModel = ResponseModelBuilder.failed(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        return super.handleExceptionInternal(exception, responseModel, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+    @ExceptionHandler(ResponseStatusException.class)
+    ResponseEntity<Object> handleResponseStatusException(ResponseStatusException responseStatusException, WebRequest request) {
+        return handleExceptionInternal(responseStatusException, responseStatusException.getReason(), responseStatusException.getStatus(), request);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException constraintViolationException, WebRequest request) {
+        var firstViolation = constraintViolationException.getConstraintViolations().iterator().next();
+        var stringJoiner = new StringJoiner(StringUtils.SPACE);
+        Optional.ofNullable(((PathImpl) firstViolation.getPropertyPath()).getLeafNode().getName())
+                .ifPresent(stringJoiner::add);
+        stringJoiner.add(firstViolation.getMessage());
+
+        return handleExceptionInternal(constraintViolationException, stringJoiner.toString(), HttpStatus.BAD_REQUEST, request);
     }
 
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     ResponseEntity<Object> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException maxUploadSizeExceededException, WebRequest request) {
         return handleExceptionInternal(maxUploadSizeExceededException, null, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    private ResponseEntity<Object> handleExceptionInternal(Exception ex, String error, HttpStatus status, WebRequest request) {
+        // always log stack trace of exception
+        log.error(ex.getMessage(), ex);
+
+        var responseModel = ResponseModelBuilder.failed(error, status);
+        return super.handleExceptionInternal(ex, responseModel, new HttpHeaders(), status, request);
     }
 
     @Override
