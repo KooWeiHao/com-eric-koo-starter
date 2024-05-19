@@ -20,14 +20,15 @@
 		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
 		<revision>1.0.0-SNAPSHOT</revision>
 
-		<starter-util.version>1.0.0-SNAPSHOT</starter-util.version>
+		<starter-commons.version>1.0.0-SNAPSHOT</starter-commons.version>
 		<springdoc-openapi.version>1.7.0</springdoc-openapi.version>
 		<commons-fileupload.version>1.5</commons-fileupload.version>
 		<querydsl.version>5.0.0</querydsl.version>
+		<tika-core.version>2.9.2</tika-core.version>
 	</properties>
 
 	<modules>
-		<module>starter-util</module>
+		<module>starter-commons</module>
 
 		<module>starter-web</module>
 		<module>starter-jpa</module>
@@ -37,8 +38,8 @@
 		<dependencies>
 			<dependency>
 				<groupId>com.eric.koo</groupId>
-				<artifactId>starter-util</artifactId>
-				<version>${starter-util.version}</version>
+				<artifactId>starter-commons</artifactId>
+				<version>${starter-commons.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springdoc</groupId>
@@ -60,8 +61,13 @@
 			<dependency>
 				<groupId>com.querydsl</groupId>
 				<artifactId>querydsl-jpa</artifactId>
-				<classifier>jakarta</classifier>
 				<version>${querydsl.version}</version>
+				<classifier>jakarta</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.tika</groupId>
+				<artifactId>tika-core</artifactId>
+				<version>${tika-core.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

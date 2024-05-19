@@ -1,4 +1,4 @@
-package com.eric.koo.starter.util;
+package com.eric.koo.starter.commons.constant;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

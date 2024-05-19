@@ -1,6 +1,6 @@
 package com.eric.koo.starter.web.mvc;
 
-import com.eric.koo.starter.util.UUIDUtil;
+import com.eric.koo.starter.commons.util.UUIDUtil;
 import com.eric.koo.starter.web.WebConstant;
 import org.apache.logging.log4j.CloseableThreadContext;
 import org.springframework.context.annotation.Configuration;

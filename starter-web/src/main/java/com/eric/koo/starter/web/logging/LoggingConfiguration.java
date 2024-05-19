@@ -1,6 +1,6 @@
 package com.eric.koo.starter.web.logging;
 
-import com.eric.koo.starter.util.Constant;
+import com.eric.koo.starter.commons.constant.Constant;
 import com.eric.koo.starter.web.WebConstant;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.core.config.Configurator;

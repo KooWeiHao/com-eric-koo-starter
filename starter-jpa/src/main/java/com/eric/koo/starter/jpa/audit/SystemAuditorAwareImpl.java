@@ -1,6 +1,6 @@
 package com.eric.koo.starter.jpa.audit;
 
-import com.eric.koo.starter.util.Constant;
+import com.eric.koo.starter.commons.constant.Constant;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 
