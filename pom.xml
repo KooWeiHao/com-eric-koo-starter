@@ -32,7 +32,8 @@
 
 		<module>starter-web</module>
 		<module>starter-jpa</module>
-    </modules>
+		<module>starter-rabbitmq</module>
+	</modules>
 
 	<dependencyManagement>
 		<dependencies>

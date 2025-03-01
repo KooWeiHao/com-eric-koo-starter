@@ -84,7 +84,7 @@ class LoggingPrintStream extends PrintStream {
 
     @Override
     public void println(float x) {
-        super.println(x);
+        log.debug(x);
     }
 
     @Override

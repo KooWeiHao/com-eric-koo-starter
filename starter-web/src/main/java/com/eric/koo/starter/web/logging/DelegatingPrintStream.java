@@ -8,11 +8,13 @@ class DelegatingPrintStream extends PrintStream {
 
     private final List<String> packages;
     private final PrintStream loggingPrintStream;
+    private final PrintStream defaultPrintStream;
 
     DelegatingPrintStream(List<String> packages) {
         super(System.out);
         this.packages = packages;
         this.loggingPrintStream = new LoggingPrintStream();
+        this.defaultPrintStream = System.out;
     }
 
     private PrintStream getPrintStream() {
@@ -25,7 +27,7 @@ class DelegatingPrintStream extends PrintStream {
         
         return isLoggingRequired 
                 ? loggingPrintStream 
-                : System.out;
+                : defaultPrintStream;
     }
 
     @Override
@@ -55,7 +57,7 @@ class DelegatingPrintStream extends PrintStream {
 
     @Override
     public void print(double d) {
-        getPrintStream().print(d);;
+        getPrintStream().print(d);
     }
 
     @Override

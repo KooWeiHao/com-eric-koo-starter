@@ -19,7 +19,7 @@ class LoggingConfiguration {
     private List<String> activeProfiles;
 
     @Bean
-    void configureLog4j2() {
+    public void configureLog4j2() {
         if(activeProfiles.contains(Constant.ENVIRONMENT_PRODUCTION)) {
             Configurator.initialize(null, ResourceUtils.CLASSPATH_URL_PREFIX + WebConstant.LOG_PROD_XML);
             log.info("Configured log - {}", WebConstant.LOG_PROD_XML);
