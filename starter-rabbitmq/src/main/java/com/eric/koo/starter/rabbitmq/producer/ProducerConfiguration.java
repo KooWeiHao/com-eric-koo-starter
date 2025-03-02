@@ -7,6 +7,7 @@ import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.ExchangeBuilder;
 import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
@@ -28,7 +29,9 @@ class ProducerConfiguration {
     public DirectExchange directExchange() {
         var name = String.format("remoting.exchange.%s", producerProperties.getSystemCode());
 
-        return new DirectExchange(name);
+        return ExchangeBuilder
+                .directExchange(name)
+                .build();
     }
 
     @SuppressWarnings({"deprecation", "SpringJavaInjectionPointsAutowiringInspection"})
